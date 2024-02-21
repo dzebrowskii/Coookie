@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapp import views
+from myapp.views import find_recipe
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('main-menu/', views.user_menu, name='main-menu'),
     path('main-menu/guestapp', views.guestapp, name='guest_app'),
+    path('find_recipe/', find_recipe, name='find_recipe'),
 
 ]
