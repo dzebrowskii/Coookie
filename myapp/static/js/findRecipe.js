@@ -1,12 +1,10 @@
 function findRecipe() {
-    // Pobierz składniki z pola textarea o id "ingredients"
-    const ingredients = document.getElementById('ingredients').value;
 
-    // Zakoduj składniki do formatu URL i wyślij zapytanie do serwera
+    var ingredients = document.getElementById('ingredients').value;
+
     fetch(`/find_recipe/?ingredients=${encodeURIComponent(ingredients)}`)
     .then(response => response.json())
     .then(data => {
-        // Wyświetl wyniki w elemencie o id "result"
         const resultDiv = document.getElementById('result');
         resultDiv.innerHTML = data.recipes.join('<br>');
     })
