@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapp import views
-from myapp.views import find_recipe
+from myapp.views import find_recipe, login, registration
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +25,7 @@ urlpatterns = [
     path('main-menu/', views.user_menu, name='main-menu'),
     path('main-menu/guestapp', views.guestapp, name='guest_app'),
     path('find_recipe/', find_recipe, name='find_recipe'),
+    path('login/', login, name='login'),
+    path('registration/', registration, name='registration'),
 
 ]
