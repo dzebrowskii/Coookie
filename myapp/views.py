@@ -20,6 +20,14 @@ def login(request):
     return render(request, 'login.html')
 
 
+def logged_app(request):
+    return render(request, 'logged_app.html')
+
+
+def logged_menu(request):
+    return render(request, 'logged_menu.html')
+
+
 def registration(request):
     form = UserCreationForm()
     context = {'form': form}
