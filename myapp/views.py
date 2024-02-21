@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from recipes_management import recipes_management as rm
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login as auth_login, logout
+from .forms import CreateUserForm
 
 
 def index(request):
@@ -17,17 +20,33 @@ def guestapp(request):
 
 
 def login(request):
-    return render(request, 'login.html')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            auth_login(request,user)
+            return redirect('guest_app')
+        else:
+            messages.info(request, 'Username or password is incorrect')
+
+    constext = {}
+    return render(request, 'login.html', constext)
 
 
 def registration(request):
-    form = UserCreationForm()
-    context = {'form': form}
+    form = CreateUserForm()
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, 'Account was created for ' + user)
+            return redirect('login')
+
+    context = {'form': form}
     return render(request, 'registration.html', context)
 
 
