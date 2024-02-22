@@ -27,12 +27,20 @@ def login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             auth_login(request,user)
-            return redirect('guest_app')
+            return redirect('logged_app')
         else:
             messages.info(request, 'Username or password is incorrect')
 
     constext = {}
     return render(request, 'login.html', constext)
+
+
+def logged_app(request):
+    return render(request, 'logged_app.html')
+
+
+def logged_menu(request):
+    return render(request, 'logged_menu.html')
 
 
 def registration(request):

@@ -27,5 +27,7 @@ urlpatterns = [
     path('find_recipe/', find_recipe, name='find_recipe'),
     path('login/', login, name='login'),
     path('registration/', registration, name='registration'),
+    path('login/logged-app', views.logged_app, name='logged_app'),
+    path('login/logged_app/logged_menu', views.logged_menu, name='logged_menu'),
 
 ]
