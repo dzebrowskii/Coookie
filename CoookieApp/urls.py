@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapp import views
-from myapp.views import find_recipe, login, registration
+from myapp.views import find_recipe, login, registration,logoutUser
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -27,6 +27,7 @@ urlpatterns = [
     path('main-menu/guestapp', views.guestapp, name='guest_app'),
     path('find_recipe/', find_recipe, name='find_recipe'),
     path('login/', login, name='login'),
+    path('logoutUser/', logoutUser, name='logout'),
     path('registration/', registration, name='registration'),
     path('login/logged-app', views.logged_app, name='logged_app'),
     path('login/logged_app/logged_menu', views.logged_menu, name='logged_menu'),
