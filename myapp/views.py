@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from recipes_management import recipes_management as rm
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout
 from .forms import CreateUserForm
@@ -56,6 +56,22 @@ def registration(request):
 
     context = {'form': form}
     return render(request, 'registration.html', context)
+
+
+def my_account(request):
+    return render(request, 'my_account.html')
+
+
+def password_change(request):
+    fm = PasswordChangeForm(request.user)
+    if request.method == 'POST':
+        fm = PasswordChangeForm(request.user, request.POST)
+        if fm.is_valid():
+            fm.save()
+            messages.success(request, 'Password changed successfully')
+            return redirect('my_account')
+
+    return render(request, 'password_change.html', {'form': fm})
 
 
 def find_recipe(request):
