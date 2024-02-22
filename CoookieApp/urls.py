@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from myapp import views
 from myapp.views import find_recipe, login, registration
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +30,8 @@ urlpatterns = [
     path('registration/', registration, name='registration'),
     path('login/logged-app', views.logged_app, name='logged_app'),
     path('login/logged_app/logged_menu', views.logged_menu, name='logged_menu'),
+    path('login/logged_app/logged_menu/my_account', views.my_account, name='my_account'),
+    path('login/logged_app/logged_menu/my_account', auth_views.PasswordChangeView.as_view(template_name='password_change.html'), name='change_password'),
+    path('login/logged_app/logged_menu/my_account/password-change', views.password_change, name='password_change'),
 
 ]

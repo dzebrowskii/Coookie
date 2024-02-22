@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <script src="{% static 'js/findRecipe.js' %}"></script>
+   </head>
+   <body>
+    <div>Your personal data</div>
+    <div id="user_data">
+        <p>Id: {{ user.id }}</p>
+        <p>Username: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>First name: {{ user.first_name }}</p>
+        <p>Last name: {{ user.last_name }}</p> </div>
+    
+    <div><button><a href="{%  url 'password_change' %}">Change password </a></button> </div>
+   <div><button>Change email</button> </div>
+   <div><button>Delete account</button> </div>
+    
+   {% for message in messages %}
+					<p id="messages">{{message}}</p>
+				{% endfor %}
+   
+   
+   </body>
+   </html>
