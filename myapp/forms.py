@@ -8,3 +8,8 @@ class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
+
+
+class EmailChangeForm(forms.Form):
+    new_email = forms.EmailField(label='New Email')
+    confirm_email = forms.EmailField(label='Confirm Email')

@@ -4,7 +4,7 @@ from recipes_management import recipes_management as rm
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout
-from .forms import CreateUserForm
+from .forms import CreateUserForm, EmailChangeForm
 
 
 def index(request):
@@ -78,3 +78,24 @@ def find_recipe(request):
     ingredients = request.GET.get('ingredients', '')
     results = rm.recipe_searcher(ingredients)
     return JsonResponse({'recipes': results})
+
+
+def email_change(request):
+    if request.method == 'POST':
+        form = EmailChangeForm(request.POST)
+        if form.is_valid():
+            new_email = form.cleaned_data['new_email']
+            confirm_email = form.cleaned_data['confirm_email']
+            if new_email == confirm_email:
+                request.user.email = new_email
+                request.user.save()
+                messages.success(request, 'Email changed successfully')
+                return redirect('my_account')
+            else:
+                messages.info(request, 'Emails do not match')
+                return redirect('email_change')
+        else:
+            messages.info(request, 'Invalid email')
+            return redirect('email_change')
+
+    return render(request, 'email_change.html', {'form': EmailChangeForm()})
