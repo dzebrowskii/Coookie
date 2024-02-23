@@ -9,6 +9,10 @@ class CreateUserForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError('Email is already in use')
 
 class EmailChangeForm(forms.Form):
     new_email = forms.EmailField(label='New Email')
