@@ -63,15 +63,15 @@ def my_account(request):
 
 
 def password_change(request):
-    fm = PasswordChangeForm(request.user)
+    form = PasswordChangeForm(request.user)
     if request.method == 'POST':
-        fm = PasswordChangeForm(request.user, request.POST)
-        if fm.is_valid():
-            fm.save()
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
             messages.success(request, 'Password changed successfully')
             return redirect('my_account')
 
-    return render(request, 'password_change.html', {'form': fm})
+    return render(request, 'password_change.html', {'form': form})
 
 
 def find_recipe(request):
