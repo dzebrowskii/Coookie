@@ -80,7 +80,7 @@ def logoutUser(request):
     logout(request)
     return redirect('login')
 
-
+#
 def find_recipe(request):
     ingredients = request.GET.get('ingredients', '')
     results = rm.recipe_searcher(ingredients)
