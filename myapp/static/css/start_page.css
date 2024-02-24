@@ -65,8 +65,20 @@ h2 {
     transition: background-color 0.3s;
 }
 
+.start-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1.5em;
+    background-color: #cc8400; /* Bardzo ciemny kolor tła przycisku */
+    color: white;
+    text-decoration: none;
+    border-radius: 10px; /* Bardziej zaokrąglone rogi */
+    transition: background-color 0.3s;
+}
+
 .start-button:hover {
-    background-color: #ff8c00; /* Ciemniejszy kolor tła przy najechaniu */
+    background-color: #b37400; /* Jeszcze ciemniejszy kolor tła przy najechaniu */
 }
 
 /* Stwórz 50 złotych pyłków */
