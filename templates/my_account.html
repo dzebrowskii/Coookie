@@ -16,7 +16,7 @@
         <p>Last name: {{ user.last_name }}</p> </div>
     
     <div><button><a href="{%  url 'password_change' %}">Change password </a></button> </div>
-   <div><button>Change email</button> </div>
+   <div><button><a href="{%  url 'email_change' %}">Change email </a></button> </div>
    <div><button>Delete account</button> </div>
     
    {% for message in messages %}

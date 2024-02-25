@@ -1,13 +1,19 @@
+{% load static %}
 <!-- main_app/templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Coookie</title>
-   </head>
-   <body>
-       <h1>Welcome to Coookie</h1>
-       
-       <a href="{%  url 'main-menu' %}" class="start-button">Let's Start Cooking</a>
-   </body>
-   </html>
+    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to Coookie</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/start_page.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1 id="welcome">Welcome to <span class="coookie">Coookie</span>!</h1>
+    <a id="start" href="{% url 'main-menu' %}" class="start-button">Let's Start Cooking</a>
+</div>
+<script src="{% static 'js/start_page.js' %}"></script>
+</body>
+</html>

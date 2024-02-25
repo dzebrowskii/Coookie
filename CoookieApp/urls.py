@@ -28,11 +28,16 @@ urlpatterns = [
     path('find_recipe/', find_recipe, name='find_recipe'),
     path('login/', login, name='login'),
     path('logoutUser/', logoutUser, name='logout'),
+    path('reset_password/', auth_views.PasswordResetView.as_view(template_name ='password_reset_form.html'), name='reset_password'),
+    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name ='password_reset_done.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name ='password_reset_confirm.html'), name='password_reset_confirm'),
+    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name ='password_reset_complete.html'), name='password_reset_complete'),
     path('registration/', registration, name='registration'),
     path('login/logged-app', views.logged_app, name='logged_app'),
     path('login/logged_app/logged_menu', views.logged_menu, name='logged_menu'),
     path('login/logged_app/logged_menu/my_account', views.my_account, name='my_account'),
     path('login/logged_app/logged_menu/my_account', auth_views.PasswordChangeView.as_view(template_name='password_change.html'), name='change_password'),
     path('login/logged_app/logged_menu/my_account/password-change', views.password_change, name='password_change'),
+    path('login/logged_app/logged_menu/my_account/email-change', views.email_change, name='email_change'),
 
 ]
