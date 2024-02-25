@@ -3,15 +3,18 @@ from myapp.models import Recipe
 
 
 def recipe_searcher(ing):
-    x = []
-    ing = ing.lower().split()
-
+    matched_recipes = []
+    ing_list = ing.lower().split()  # List of ingredients from input, lowercase
     for recipe in Recipe.objects.all():
-        ingredients_list = recipe.ingredients.lower().split()
-        if any(ingredient in ingredients_list for ingredient in ing) and all(ingredient in ing for ingredient in ingredients_list):
-            x.append(recipe.description)
+        recipe_ingredients = []
+        for ing in recipe.ingredient.all():
+            recipe_ingredients.append(str(ing.name))
+        common_ingredients = [ing for ing in recipe_ingredients if ing in ing_list]
+        if len(common_ingredients) == len(recipe_ingredients):
+            matched_recipes.append(recipe.description)
 
-    if len(x) == 0:
+    if len(matched_recipes) == 0:
         return ['Unfortunately, we have not matched any of the recipes to the given ingredients']
 
-    return x
+    return matched_recipes
+

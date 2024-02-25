@@ -1,0 +1,48 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: linear-gradient(to bottom, #ffdfb3, #ffdfb3); /* Jednolity kolor tła */
+}
+
+.menu-item {
+  display: block;
+  margin: 10px auto; /* Centralizacja elementów menu */
+  background-color: #333; /* Ciemne tło dla elementów menu */
+  color: white; /* Biały tekst dla elementów menu */
+  padding: 10px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px; /* Zaokrąglenie rogów */
+    width: 40%;
+
+
+}
+
+.menu-item:first-child {
+  margin-top: 100px; /* Zwiększa odstęp od górnej krawędzi dla pierwszego elementu */
+}
+.menu-item:hover {
+  background-color: #e0c063; /* Zmiana tła elementów menu przy najechaniu */
+}
+
+/* Stylizacja przycisków zgodnie z nowymi wymaganiami */
+button {
+  background-color: #e0c063; /* Kolor przycisków */
+  border: none;
+  color: white;
+  padding: 15px 60px;
+  text-align: center;
+  text-decoration: none;
+  display: block; /* Aby przyciski były pod sobą */
+  font-size: 16px;
+  margin: 50px auto; /* Zwiększone odstępy między przyciskami */
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #d4af37; /* Ciemniejszy kolor przycisku przy najechaniu */
+}
+
+
+
+

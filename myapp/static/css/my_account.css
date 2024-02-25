@@ -1,0 +1,57 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: linear-gradient(to bottom, #ffdfb3, #ffdfb3);
+  color: #333;
+  text-align: center;
+    margin-top: 100px;
+}
+
+#user_data p {
+  margin: 10px auto;
+  padding: 5px;
+  background-color: #fff;
+  color: #333;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#user_data p:last-child {
+  margin-bottom: 30px; /* większy odstęp od dolnego marginesu */
+}
+
+.button-container {
+  margin: 10px auto;
+  width: 200px;
+}
+
+.button {
+  background-color: #e0c063;
+  border: none;
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin: 10px auto;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box; /* Zapewnia, że padding nie wpłynie na szerokość przycisku */
+}
+
+.button:hover {
+  background-color: #d4af37;
+}
+
+#messages {
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #f2f2f2;
+  color: #333;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

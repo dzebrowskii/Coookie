@@ -4,6 +4,8 @@ from recipes_management import recipes_management as rm
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout
+from django.contrib.auth.decorators import login_required
+from .forms import CreateUserForm
 from .forms import CreateUserForm, EmailChangeForm
 
 
@@ -26,7 +28,7 @@ def login(request):
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            auth_login(request,user)
+            auth_login(request, user)
             return redirect('logged_app')
         else:
             messages.info(request, 'Username or password is incorrect')
@@ -34,11 +36,12 @@ def login(request):
     constext = {}
     return render(request, 'login.html', constext)
 
-
+@login_required(login_url='login')
 def logged_app(request):
     return render(request, 'logged_app.html')
 
 
+@login_required(login_url='login')
 def logged_menu(request):
     return render(request, 'logged_menu.html')
 
@@ -57,11 +60,11 @@ def registration(request):
     context = {'form': form}
     return render(request, 'registration.html', context)
 
-
+@login_required(login_url='login')
 def my_account(request):
     return render(request, 'my_account.html')
 
-
+@login_required(login_url='login')
 def password_change(request):
     form = PasswordChangeForm(request.user)
     if request.method == 'POST':
@@ -74,6 +77,11 @@ def password_change(request):
     return render(request, 'password_change.html', {'form': form})
 
 
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
+
+#
 def find_recipe(request):
     ingredients = request.GET.get('ingredients', '')
     results = rm.recipe_searcher(ingredients)

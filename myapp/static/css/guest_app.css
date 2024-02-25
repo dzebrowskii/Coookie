@@ -1,0 +1,78 @@
+/* styles.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: linear-gradient(to bottom, #ffdfb3, #ffdfb3); /* Jednolity kolor tła */
+}
+
+
+
+
+
+h2, h3 {
+  color: #333; /* Ciemnoszary tekst */
+  text-align: center;
+}
+
+
+
+textarea {
+  width: 80%;
+  margin: 20px auto; /* Centralizuje i dodaje margines wokół textarea */
+  padding: 10px; /* Dodaje wewnętrzny odstęp do textarea */
+  background-color: #ffffff; /* Ustawia białe tło dla textarea */
+  border: 2px solid #d4af37; /* Złote obramowanie */
+  border-radius: 5px; /* Delikatnie zaokrągla narożniki textarea */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Dodaje subtelny cień dla efektu głębi */
+  font-family: 'Arial', sans-serif; /* Dopasowuje czcionkę do reszty strony */
+  color: #333; /* Ustawia kolor tekstu */
+}
+
+/* Dla lepszej użyteczności, możesz także stylizować pole tekstowe podczas interakcji */
+textarea:focus {
+  border-color: #ffac33; /* Zmiana koloru obramowania podczas fokusowania */
+  outline: none; /* Usunięcie domyślnego konturu */
+}
+
+
+label{
+    font-size: 20px;
+    color: #333; /* Ciemnoszary tekst */
+    text-align: center;
+    padding-left: 150px;
+}
+
+button {
+  background-color: #e0c063; /* Kolor przycisków z obrazka */
+  border: none;
+  color: white;
+  padding: 15px 50px ;
+
+  text-align: center;
+  text-decoration: none;
+  display: block; /* Aby przyciski były pod sobą */
+  font-size: 16px;
+  margin: 10px auto; /* Centralne wyrównanie i odległość między przyciskami */
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+
+button a {
+  padding-top: 100px;
+  color: white; /* Biały tekst na przyciskach */
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #d4af37; /* Ciemniejszy kolor przycisku przy najechaniu */
+}
+
+.result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Zajmuje pełną szerokość kontenera */
+  /* Możesz dodać dodatkowe style, takie jak wysokość, jeśli jest potrzebna */
+}
+
