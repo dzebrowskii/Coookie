@@ -14,6 +14,7 @@ class CreateUserForm(UserCreationForm):
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError('Email is already in use')
 
+
 class EmailChangeForm(forms.Form):
     new_email = forms.EmailField(label='New Email')
     confirm_email = forms.EmailField(label='Confirm Email')
