@@ -1,19 +1,25 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Menu</title>
-    <script src="{% static 'js/findRecipe.js' %}"></script>
-   </head>
-   <body>
-       
-       <h2>Enter your ingredients</h2>
-       <textarea id="ingredients" name="ingredients" rows="4" cols="50" placeholder="Enter your ingredients"></textarea>
-       <h3>Suggested recipes:</h3>
-       <div id="result"></div>
-       <div><button type="button" onclick="findRecipe()">Find your recipe</button></div>
-       <div><button type="button" ><a href="{%  url 'main-menu' %}">Go back </a></button></div>
+    <link rel="stylesheet" href="{% static 'css/guest_app.css' %}">
+    <script src="{% static 'js/findRecipe.js' %}" defer></script>
+</head>
+<body>
    
-   </body>
-   </html>
+   <h2>Enter your ingredients</h2>
+   <label for="ingredients"></label><textarea id="ingredients" name="ingredients" rows="4" cols="50" placeholder="Enter your ingredients"></textarea>
+   <div id="subtitle"><h3></h3></div>
+   <div class = "result" id="result"></div>
+   <div><button type="button" onclick="findRecipe(); function updateSubtitle() {
+    document.getElementById('subtitle').innerHTML = '<h3>Here are some recipes you can make with these ingredients</h3>';   
+   }
+   updateSubtitle(); ">Find your recipe</button></div>
+   
+   
+
+</body>
+</html>
