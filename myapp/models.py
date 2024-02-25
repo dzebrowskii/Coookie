@@ -6,7 +6,7 @@ class Ingredient(models.Model):
     description = models.CharField(max_length=200)
 
     def __str__(self):
-        return f"Ingredient {self.name}"
+        return f"Ingredient {self.id}"
 
 
 class Recipe(models.Model):
@@ -15,4 +15,4 @@ class Recipe(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return f"Recipe {self.name}"
+        return f"Recipe {self.id}"
