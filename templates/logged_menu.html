@@ -1,24 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Menu</title>
-<style>
-  .menu-item {
-    display: block;
-    margin: 10px 0;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-decoration: none;
-    text-align: center;
-  }
-</style>
+<link rel="stylesheet" href="{% static 'css/logged_menu.css' %}">
 </head>
 <body>
 
-  <a href="{%  url 'my_account' %}" class="menu-item" > My Account </a>
+  <div class="menu">
+  <a href="{%  url 'my_account' %}" class="menu-item">My Account</a>
   <a href="saved-recipes.html" class="menu-item" target="_blank">Saved Recipes</a>
   <a href="friends.html" class="menu-item" target="_blank">Friends</a>
   <a href="your-analysis.html" class="menu-item" target="_blank">Your Analysis</a>
@@ -30,5 +22,6 @@
   <a href="help.html" class="menu-item" target="_blank">Help</a>
   <a href="{% url 'logout' %}" class="menu-item" target="_blank">Sign Out</a>
   <a href="go-back.html" class="menu-item" target="_blank">Go Back</a>
+</div>
 </body>
 </html>
