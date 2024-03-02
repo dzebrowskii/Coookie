@@ -13,6 +13,7 @@ def index(request):
     return render(request, 'index.html')
 
 
+@login_required(login_url='login')
 def user_menu(request):
     return render(request, 'user_menu.html')
 
@@ -35,6 +36,7 @@ def login(request):
 
     constext = {}
     return render(request, 'login.html', constext)
+
 
 @login_required(login_url='login')
 def logged_app(request):
@@ -60,9 +62,11 @@ def registration(request):
     context = {'form': form}
     return render(request, 'registration.html', context)
 
+
 @login_required(login_url='login')
 def my_account(request):
     return render(request, 'my_account.html')
+
 
 @login_required(login_url='login')
 def password_change(request):
@@ -81,13 +85,14 @@ def logoutUser(request):
     logout(request)
     return redirect('login')
 
-#
+
 def find_recipe(request):
     ingredients = request.GET.get('ingredients', '')
     results = rm.recipe_searcher(ingredients)
     return JsonResponse({'recipes': results})
 
 
+@login_required(login_url='login')
 def email_change(request):
     if request.method == 'POST':
         form = EmailChangeForm(request.POST)

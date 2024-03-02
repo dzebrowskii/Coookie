@@ -6,7 +6,7 @@ body {
 .menu-item {
   display: block;
   margin: 10px auto; /* Centralizacja elementów menu */
-  background-color: #333; /* Ciemne tło dla elementów menu */
+  background-color: #af6700; /* Ciemne tło dla elementów menu */
   color: white; /* Biały tekst dla elementów menu */
   padding: 10px;
   text-decoration: none;
