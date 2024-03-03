@@ -33,6 +33,7 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name ='password_reset_confirm.html'), name='password_reset_confirm'),
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name ='password_reset_complete.html'), name='password_reset_complete'),
     path('registration/', registration, name='registration'),
+    path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     path('login/logged-app', views.logged_app, name='logged_app'),
     path('login/logged_app/logged_menu', views.logged_menu, name='logged_menu'),
     path('login/logged_app/logged_menu/my_account', views.my_account, name='my_account'),

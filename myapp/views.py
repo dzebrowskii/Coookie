@@ -1,5 +1,13 @@
+from django.urls import reverse
+
+from django.contrib.auth.models import User
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
+from django.utils.encoding import force_bytes, force_str
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+
 from recipes_management import recipes_management as rm
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib import messages
@@ -36,6 +44,7 @@ def login(request):
     constext = {}
     return render(request, 'login.html', constext)
 
+
 @login_required(login_url='login')
 def logged_app(request):
     return render(request, 'logged_app.html')
@@ -52,17 +61,51 @@ def registration(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
+            user = form.save(commit=False)
+            user.is_active = False
             form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created for ' + user)
-            return redirect('login')
+            user_email = request.POST.get('email')
+
+            token = default_token_generator.make_token(user)
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+
+            activation_link = request.build_absolute_uri(
+                reverse('activate', kwargs={'uidb64': uid, 'token': token}))
+
+            send_mail(
+                'Activate your account',
+                f'Click on the link to activate your account: {activation_link}',
+                'coookieapp@outlook.com',
+                [user_email],
+                fail_silently=False,
+            )
+        username = form.cleaned_data.get('username')
+        messages.success(request,
+                         f'Account was created for {username}. Please check your email to activate your account.')
+        return redirect('login')
 
     context = {'form': form}
     return render(request, 'registration.html', context)
 
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        messages.success(request, 'Account activated successfully')
+        return redirect('login')
+
+
 @login_required(login_url='login')
 def my_account(request):
     return render(request, 'my_account.html')
+
 
 @login_required(login_url='login')
 def password_change(request):
@@ -80,6 +123,7 @@ def password_change(request):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
 
 #
 def find_recipe(request):
