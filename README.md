@@ -1,0 +1,21 @@
+Features:
+- finding recipes basing on user ingredients
+- registration and login
+- account activation with email
+- password recovery with email
+- displaying logged in user data
+- password and email change
+- deleting user account
+- database with recipes and ingredients
+- scraping recipes from https://www.smaczny.pl/przepisy,codzienne_gotowanie
+- saving and displaying user favorite recipes
+- analysis of ingredient usage
+- analysis of calories eaten
+- financial analysis
+- adding friends
+- rating app
+- app recommendation
+- dark mode
+- adding own recipes
+- predicting recipes
+- user ranking with badges
